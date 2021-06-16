@@ -1,0 +1,274 @@
+body {
+  background-color: #F7EDE2;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+a:active, a:focus, a:hover {
+  outline: none;
+  text-decoration: none;
+}
+
+/*PIZZA INDEX */
+.wrapper {
+  max-width: 1400px;
+  margin: 50px auto;
+  background-color: #F6BD60;
+  border-radius: 10px;
+  box-shadow: 5px 5px 25px 1px rgba(0, 0, 0, 0.5);
+  padding: 0 15px 15px 15px;
+}
+
+.header {
+  height: 100px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #F7EDE2;
+}
+
+.header__logo {
+  background-image: url("../img/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 180px;
+  height: 75px;
+}
+
+.header__cart, .cart__empty-return, .cart__order {
+  background-color: #84A59D;
+  color: #FFF;
+  min-width: 100px;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 20px;
+  padding: 10px 20px;
+  transition: 0.4s;
+}
+
+.header__cart:hover, .cart__empty-return:hover, .cart__order:hover {
+  background-color: #708c85;
+}
+
+.header__cart:active, .cart__empty-return:active, .cart__order:active {
+  background-color: #708c85;
+  transform: translateY(5px);
+  transition: 0.4s;
+}
+
+.header__cart-delimiter {
+  width: 1px;
+  height: 25px;
+  background-color: #F7EDE2;
+  margin: 0 20px;
+}
+
+.header__cart svg {
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+.pizza__title {
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+.pizza__card {
+  background-color: #FFF;
+  text-align: center;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 15px 0;
+  box-shadow: 5px 5px 50px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.pizza__card:hover {
+  transform: translateY(5px);
+  transition: 0.4s;
+}
+
+.pizza__card-image {
+  width: 233px;
+  height: 233px;
+}
+
+.pizza__card-title {
+  font-size: 23px;
+}
+
+.content__top-item {
+  background-color: #FFF;
+  padding: 13px 60px;
+  border-radius: 30px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.content__top .active {
+  background-color: #84A59D;
+  color: #F7EDE2;
+}
+
+.pizza__card-selector {
+  background-color: #F7EDE2;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.pizza__card-selector ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.pizza__card-selector li {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  flex: 1;
+}
+
+.pizza__card-selector .active {
+  background-color: #F5CAC3;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.pizza__card-selector .disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.pizza__gough {
+  margin-bottom: 6px;
+}
+
+.pizza__card-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pizza__card-price {
+  font-size: 22px;
+}
+
+.pizza__card-buy {
+  border: 2px solid #84A59D;
+  color: #84A59D;
+  font-size: 22px;
+  padding: 10px 25px;
+  border-radius: 20px;
+}
+
+.pizza__card-buy:hover {
+  background-color: #84A59D;
+  color: #F7EDE2;
+}
+
+.pizza__card-buy svg path {
+  fill: #84A59D;
+}
+
+.pizza__card-buy:hover svg path {
+  fill: #F7EDE2;
+}
+
+/*CART */
+.cart__title {
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.cart__item {
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 5px 5px 50px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.cart__item img {
+  margin-right: 15px;
+}
+
+.cart__item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart__item-title {
+  font-size: 19px;
+}
+
+.cart__item-count {
+  margin: 15px;
+}
+
+.cart__item-clear {
+  margin-left: 10px;
+}
+
+/*EMPTY CART */
+.cart__empty {
+  margin: 100px 0;
+}
+
+.cart__empty-title {
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.cart__empty-image {
+  margin-bottom: 60px;
+}
+
+.cart__empty-return, .cart__order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 200px;
+  margin-top: 10px;
+}
+
+/*FOOTER */
+.footer {
+  text-align: center;
+  margin: 10px;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.footer a {
+  color: #708c85;
+}
+
+.footer span, .footer a:hover {
+  color: red;
+}
+
+/*MODAL */
+.dataModal__buttons button {
+  margin-left: 10px;
+}
+
+.dataModal form label {
+  margin-bottom: 7px;
+}
+
+.dataModal form input {
+  font-weight: bold;
+}
+
+/*MEDIA QUERIES */
+@media screen and (max-width: 1175px) {
+  .content__top > div + div {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
