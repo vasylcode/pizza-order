@@ -32,3 +32,5 @@ start();
 
 app.use('/api/pizza', require('./routes/pizza.routes'));
 app.use('/api/categories', require('./routes/categories.routes'));
+app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/order', require('./routes/order.routes'));

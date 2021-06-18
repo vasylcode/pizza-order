@@ -7,7 +7,11 @@ const Pizza = require('../models/Pizza');
 // @access  Public
 router.get('/', (req, res) => {
     try {
-        Pizza.find().then(items => res.json(items));
+        if (req.query.category) {
+            Pizza.find({ category: req.query.category }).then(items => res.json(items));
+        } else {
+            Pizza.find().then(items => res.json(items));
+        }
     } catch (error) {
         res.status(500).json({message: "Error: " + error.message})
     }

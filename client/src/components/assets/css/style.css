@@ -33,7 +33,8 @@ a:active, a:focus, a:hover {
   height: 75px;
 }
 
-.header__cart, .cart__empty-return, .cart__order {
+.header__cart, .cart__empty-return, .cart__order, .admin__button {
+  cursor: pointer;
   background-color: #84A59D;
   color: #FFF;
   min-width: 100px;
@@ -44,11 +45,11 @@ a:active, a:focus, a:hover {
   transition: 0.4s;
 }
 
-.header__cart:hover, .cart__empty-return:hover, .cart__order:hover {
+.header__cart:hover, .cart__empty-return:hover, .cart__order:hover, .admin__button:hover {
   background-color: #708c85;
 }
 
-.header__cart:active, .cart__empty-return:active, .cart__order:active {
+.header__cart:active, .cart__empty-return:active, .cart__order:active, .admin__button:active {
   background-color: #708c85;
   transform: translateY(5px);
   transition: 0.4s;
@@ -213,6 +214,10 @@ a:active, a:focus, a:hover {
   margin-left: 10px;
 }
 
+.cart__item-params {
+  min-width: 15vw;
+}
+
 /*EMPTY CART */
 .cart__empty {
   margin: 100px 0;
@@ -227,7 +232,7 @@ a:active, a:focus, a:hover {
   margin-bottom: 60px;
 }
 
-.cart__empty-return, .cart__order {
+.cart__empty-return, .cart__order, .admin__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,10 +269,37 @@ a:active, a:focus, a:hover {
   font-weight: bold;
 }
 
+.pizza-block {
+  margin: 0 auto;
+}
+
+/*ADMIN PANEL */
+.admin th {
+  font-size: 18px;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #F7EDE2;
+}
+
+.admin__button {
+  display: inline-flex;
+}
+
 /*MEDIA QUERIES */
 @media screen and (max-width: 1175px) {
   .content__top > div + div {
     display: none !important;
+  }
+
+  .admin table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
   }
 }
 

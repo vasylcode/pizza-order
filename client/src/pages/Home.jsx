@@ -2,16 +2,18 @@ import React from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Categories, PizzaBlock } from '../components';
+import { Categories, PizzaBlock, PizzaLoadingBlock } from '../components';
 
 import { setCategory } from '../redux/actions/filters';
 import { fetchPizzas } from '../redux/actions/pizzas';
-import { addPizzaToCart } from '../redux/actions/cart';
 
-function Home({ items }) {
+function Home() {
     const dispatch = useDispatch();
+    const items = useSelector(({ pizzas }) => pizzas.items);
+    const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
 	const [categories, setCategories] = React.useState([]);
     const { category } = useSelector(({ filters }) => filters);
+    
 
     React.useEffect(() => {
         axios.get('http://localhost:5000/api/categories')
@@ -21,14 +23,19 @@ function Home({ items }) {
     }, []);
 
     React.useEffect(() => {
-        console.log("fetch");
         dispatch(fetchPizzas(category));
       }, [category]);
 
     const onSelectCategory = React.useCallback((index) => {
-        console.log("category");
         dispatch(setCategory(index));
     }, []);
+
+    const handleAddPizzaToCart = (obj) => {
+        dispatch({
+            type: 'ADD_PIZZA_CART',
+            payload: obj,
+        });
+    };
 
 	return (
         <React.Fragment>
@@ -37,9 +44,11 @@ function Home({ items }) {
 				<Categories activeCategory={category} onClickCategory={onSelectCategory} items={categories} />
             </div>
 			<div className="row pizza no-gutters">
-				{
-					items.map(obj => <PizzaBlock key={obj._id} {...obj} /> )
-				}
+				{isLoaded
+					? items.map(obj => <PizzaBlock onClickAddPizza={handleAddPizzaToCart} key={obj.id} {...obj} /> )
+                : Array(items.length)
+                .fill(0)
+                .map((_, index) => <PizzaLoadingBlock key={index} />)}
 			</div>
         </React.Fragment>
     );

@@ -30,7 +30,8 @@ a:active, a:focus, a:hover
 	width: 180px
 	height: 75px
 
-.header__cart, .cart__empty-return, .cart__order
+.header__cart, .cart__empty-return, .cart__order, .admin__button
+	cursor: pointer
 	background-color: $cart-bg
 	color: $cart-color
 	min-width: 100px
@@ -40,10 +41,10 @@ a:active, a:focus, a:hover
 	padding: 10px 20px
 	transition: .4s
 
-.header__cart:hover, .cart__empty-return:hover, .cart__order:hover
+.header__cart:hover, .cart__empty-return:hover, .cart__order:hover, .admin__button:hover
 	background-color: $cart-active
 
-.header__cart:active, .cart__empty-return:active, .cart__order:active
+.header__cart:active, .cart__empty-return:active, .cart__order:active, .admin__button:active
 	background-color: $cart-active
 	transform: translateY(5px)
 	transition: .4s
@@ -179,6 +180,9 @@ a:active, a:focus, a:hover
 .cart__item-clear
 	margin-left: 10px
 
+.cart__item-params
+	min-width: 15vw
+
 
 /*EMPTY CART*/
 .cart__empty
@@ -191,7 +195,7 @@ a:active, a:focus, a:hover
 .cart__empty-image
 	margin-bottom: 60px
 
-.cart__empty-return, .cart__order
+.cart__empty-return, .cart__order, .admin__button
 	display: flex
 	align-items: center
 	justify-content: center
@@ -221,9 +225,30 @@ a:active, a:focus, a:hover
 .dataModal form input
 	font-weight: bold
 
+.pizza-block
+	margin: 0 auto
+
+/*ADMIN PANEL*/
+.admin th
+	font-size: 18px
+
+input
+	border: none
+	outline: none
+	padding: 10px
+	border-radius: 15px
+	background-color: $bg
+
+.admin__button
+	display: inline-flex
 
 
 /*MEDIA QUERIES*/
 @media screen and (max-width: 1175px)
 	.content__top > div + div
 		display: none!important
+
+	.admin table
+		display: block
+		width: 100%
+		overflow-x: auto
