@@ -7,7 +7,7 @@ const Order = new Schema({
     email: String,
     name: String,
     address: String,
-    pay: String 
+    pay: Boolean 
 });
 
 module.exports = mongoose.model('order', Order);

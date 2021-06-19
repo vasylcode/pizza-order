@@ -4,7 +4,7 @@ class orderController {
     async add(req, res) {
         try {
             const {food, price, email, name, address, pay} = req.body;
-            const order = new Order({food, price, email, name, address, pay});
+            const order = new Order({food: food, price: price, email: email, name: name, address: address, pay: pay});
             await order.save();
             return res.json({message: "Order was successfuly added"});
         } catch (error) {

@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const config = require('config');
 const mongoose = require('mongoose');
 
 const app = express();
+
+app.use(cors());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -10,7 +13,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-
 
 const PORT = config.get('port') || 5000;
 

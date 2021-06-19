@@ -1,6 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 
 import cartEmptyImage from '../components/assets/img/empty-cart.png';
 import { CartItem } from '../components';
@@ -21,7 +23,33 @@ function Cart() {
     };
 
     const onClickOrder = () => {
-        console.log('YOUR ORDER', items);
+        // console.log('YOUR ORDER', items);
+    };
+
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        let food = [];
+        let price = 0;
+
+        for (let key in items) {
+            if (items.hasOwnProperty(key)) {
+                price = price + items[key]['totalPrice'];
+                food.push(items[key]['items']);
+            }
+        }
+
+        const myData = {
+            food: food,
+            price: price,
+        }
+        const query = Object.assign({}, myData, data);
+    
+        axios.post('http://localhost:5000/api/order/add', query)
+        .then(response => {
+            alert(response.data.message);
+        });
+
     };
 
     return (
@@ -66,31 +94,31 @@ function Cart() {
                         <div className="modal-body">
 
 
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-row">
                                     <div className="form-group col-md-6">
                                         <label htmlFor="inputEmail">Email</label>
-                                        <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
+                                        <input type="email" className="form-control" {...register("email")} placeholder="Email" />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label htmlFor="inputPassword">Name</label>
-                                        <input type="text" className="form-control" id="inputPassword" placeholder="Name" />
+                                        <input type="text" className="form-control" {...register("name")} placeholder="Name" />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="inputAddress">Address</label>
-                                    <input type="text" className="form-control" id="inputAddress" placeholder="ul. Grunwaldzka 1" />
+                                    <input type="text" className="form-control" {...register("address")} placeholder="ul. Grunwaldzka 1" />
                                 </div>
                                 <div className="form-group">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" id="gridCheck" />
+                                        <input className="form-check-input" type="checkbox" {...register("pay")} />
                                         <label className="form-check-label" htmlFor="gridCheck">Pay By Cash</label>
                                     </div>
                                 </div>
                                 
                                 <div className="dataModal__buttons d-flex justify-content-end">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Order & Pay</button>
+                                    <button type="submit" className="btn btn-primary">Order & Pay</button>
                                 </div>
                             </form>
 
